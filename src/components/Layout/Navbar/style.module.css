@@ -1,0 +1,81 @@
+.navbar {
+    
+}
+
+.navbar_content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0px;
+}
+
+
+.navbar_logo {
+    width: 100px;
+    object-fit: cover;
+}
+
+.navbar_list {
+    display: flex;
+    gap: 20px;
+}
+
+.navbar_list a {
+    position: relative;
+    text-transform: capitalize;
+    color: var(--primary);
+    font-size: 18px;
+    transition: 0.5s ease-in-out;
+    padding-bottom: 10px;
+}
+
+.navbar_list a::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 4px;
+    background-color: var(--bg-primary-color);
+    transition: 0.5s ease-in-out;
+}
+
+.navbar_list a:hover::before {
+    width: 100%;
+} 
+
+.navbar_list a.active-link {
+    color: tomato;
+}
+
+
+
+.navbar_right {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.navbar_right img {
+    width: 1.4rem;
+}
+
+.navbar_right_basket_icon {
+    position: relative;
+}
+
+.navbar_right_size_product {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    height: 18px;
+    width: 18px;
+    color: white;
+    background-color: tomato;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

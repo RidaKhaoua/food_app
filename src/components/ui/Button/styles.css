@@ -1,0 +1,7 @@
+button {
+    transition: 0.5 ease-in-out;
+}
+
+button.sing-in:hover {
+    background-color: #fff4f2 !important;
+}
