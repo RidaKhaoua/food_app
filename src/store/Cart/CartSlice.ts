@@ -19,8 +19,24 @@ const initialState: ICart = {
 const cartSlice = createSlice({
     name: "cart",
     initialState,
-    reducers: {}
+    reducers: {
+        addFoodToCart: (state, action) => {
+            const id = action.payload;
+            if(state.foodIdAndQuantity[id]) {
+                state.foodIdAndQuantity[id] +=1;
+            }else {
+                state.foodIdAndQuantity[id] = 1
+            }
+        },
+        
+        minusFoodToCart: (state, action) => {
+            const id = action.payload;
+            if(state.foodIdAndQuantity[id] > 0) {
+                state.foodIdAndQuantity[id] -=1;
+            }
+        }
+    }
 
 })
-
+export const {addFoodToCart, minusFoodToCart} = cartSlice.actions;
 export default cartSlice.reducer;
