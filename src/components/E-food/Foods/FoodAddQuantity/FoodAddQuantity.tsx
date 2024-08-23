@@ -1,24 +1,21 @@
 import { assets } from "@assets";
-import React, { useState } from "react";
+
 import styles from "./style.module.css";
+import useCart from "@hooks/useCart";
 
 const { food_add_quantity, food_counter, food_quantity } = styles;
 
-function FoodAddQuantity() {
-  const [counterQuatity, setCounterQuantity] = useState(0);
+type TFoodAddQuantity = {
+  id: number | string
+}
 
-  const handleAddQuantity = () => {
-    setCounterQuantity((prev) => prev + 1);
-  };
-
-  const handlSubstractQuantity = () => {
-    setCounterQuantity((prev) => prev - 1);
-  };
+function FoodAddQuantity({id}: TFoodAddQuantity) {
+  const {status, error, foodIdAndQuantity, handleAddFood, handleMinusFood} = useCart();
 
   return (
     <div className={food_quantity}>
-      {!counterQuatity ? (
-        <div className={food_add_quantity} onClick={handleAddQuantity}>
+      {!foodIdAndQuantity[id] ? (
+        <div className={food_add_quantity} onClick={() => handleAddFood(id)}>
           <img src={assets.add_icon_white} alt="acon add" />
         </div>
       ) : (
@@ -26,13 +23,13 @@ function FoodAddQuantity() {
           <img
             src={assets.remove_icon_red}
             alt="icon plus"
-            onClick={handlSubstractQuantity}
+            onClick={() => handleMinusFood(id)}
           />
-          <p>{counterQuatity}</p>
+          <p>{foodIdAndQuantity[id]}</p>
           <img
             src={assets.add_icon_green}
             alt="icon minus"
-            onClick={ handleAddQuantity}
+            onClick={() => handleAddFood(id)}
           />
         </div>
       )}

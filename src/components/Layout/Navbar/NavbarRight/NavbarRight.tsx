@@ -3,6 +3,8 @@ import { assets } from "@assets";
 import styles from "../style.module.css";
 import { Button } from "@components/ui";
 import { Link } from "react-router-dom";
+import { useAppSelectore } from "@store/hooks";
+import cartTotalQuantitySelectore from "@store/Cart/selectores/selectors";
 
 const btnStyle = {
   backgroundColor: "transparent",
@@ -14,13 +16,14 @@ const btnStyle = {
 };
 
 function NavbarRight() {
+  const cartTotalQuantity = useAppSelectore(cartTotalQuantitySelectore)
   return (
     <div className={styles.navbar_right}>
       <Img imgName={assets.search_icon} title="search_icon" />
       <div className={styles.navbar_right_basket_icon}>
         <Link to="/Cart">
         <Img imgName={assets.basket_icon} title="basket_icon" />
-        <div className={styles.navbar_right_size_product}>0</div>
+        <div className={styles.navbar_right_size_product}>{cartTotalQuantity}</div>
         </Link>
         
       </div>
